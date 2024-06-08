@@ -1,15 +1,25 @@
+import {useState} from "react"
 import TodoList from "./components/TodoList"
-import Todoimput from "./components/TodoImput"
+import TodoInput from "./components/TodoInput"
 
 function App() {
+
+  const [todos, setTodos] = useState([
+    'Show love to Wife',
+    'Appreciate Wife', 
+    'Spend lots of time with Wife'
+  ])
+
+  function handleAddTodos(newTodo) {
+    const newTodoList = [...todos, newTodo]
+    setTodos(newTodoList)
+  }
+
   return (
-    <>
-      <main>
-        <Todoimput />
-        <TodoList />
-      </main>
-        
-    </>
+      <>
+       <TodoInput handleAddTodos=(handleAddTodos) />
+        <TodoList todos={todos} />
+      </>  
   )
 }
 
